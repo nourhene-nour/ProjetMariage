@@ -188,6 +188,19 @@ bgMusic.play().catch(error => {
         }, 2200);
 
     });
+    
+    discoverBtn.addEventListener("click", function (e) {
+
+    e.preventDefault();
+
+    const invitation = document.getElementById("invitation");
+
+    invitation.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
 
 });
 
