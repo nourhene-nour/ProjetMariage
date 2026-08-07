@@ -837,7 +837,7 @@ img {
 
     /* Bordure florale */
     #accueil .envelope-arrival > img {
-        width: 100% !important;
+        width: 80% !important;
         height: 100% !important;
         object-fit: cover !important;
     }
@@ -845,7 +845,7 @@ img {
     /* Rabat */
     #flap {
         width: 100% !important;
-        height: 42dvh !important;
+        height: 65dvh !important;
     }
 
 }
