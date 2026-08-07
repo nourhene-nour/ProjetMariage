@@ -568,9 +568,9 @@ img {
        ===================================================== */
 
     #discoverBtn {
-        font-size: 13px !important;
-        padding: 10px 18px !important;
-        margin-top: 5px !important;
+        font-size: 10px !important;
+        padding: 7px 15px !important;
+        margin-top: 2px !important;
         white-space: nowrap;
     }
 
@@ -598,7 +598,7 @@ img {
 
         width: 100% !important;
         max-width: 360px !important;
-        min-height: 500px !important;
+        min-height: 600px !important;
     }
 
 
@@ -612,7 +612,7 @@ img {
     #Pas-photo > div > div,
     #adresse > div > div {
 
-        inset: 18px !important;
+        inset: 14px !important;
         padding: 25px 18px !important;
         border-radius: 22px !important;
     }
@@ -632,7 +632,7 @@ img {
     #Pas-photo h2,
     #adresse h2 {
 
-        font-size: 1.8rem !important;
+        font-size: 1.2rem !important;
         line-height: 1.2;
         margin-bottom: 20px !important;
     }
@@ -650,7 +650,7 @@ img {
     #Pas-photo p,
     #adresse p {
 
-        font-size: 15px !important;
+        font-size: 10px !important;
         line-height: 1.7 !important;
     }
 
@@ -695,7 +695,7 @@ img {
 
     #Pas-photo img {
         width: 55px !important;
-        margin-top: 5px;
+        margin-top: 8px;
     }
 
     #Pas-photo br {
