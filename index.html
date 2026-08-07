@@ -90,211 +90,133 @@
 
 <!-- ================= ACCUEIL ================= -->
 
-<section id="accueil" class="flex justify-center items-center min-h-screen px-6">
 
-    <div class="relative w-[900px] max-w-[90%] min-h-[600px] -mt-16">
 
-    <!-- Lettre -->
+ <!-- ================= BIENVENUE ================= -->
 
-    <div class="relative bg-white rounded-xl shadow-2xl overflow-hidden envelope-arrival ">
+<section id="accueil"
+         class="min-h-screen flex flex-col justify-center items-center text-center px-6 -mt-20">
 
-        <!-- Bordure -->
+    <div id="letterContent">
+
+        <h2
+            class="text-6xl text-sky-700"
+            style="font-family:'Great Vibes',cursive;">
+            Bienvenue
+        </h2>
+
+        <p
+            class="mt-6 text-3xl text-slate-700"
+            style="font-family:'Cormorant Garamond',serif;">
+            au mariage de
+        </p>
+
+        <h1
+            class="mt-4 text-7xl text-sky-800"
+            style="font-family:'Great Vibes',cursive;">
+            Nourhene
+        </h1>
 
         <img
-            src="images/Bordure.png"
-            class="absolute inset-0 w-full h-full object-cover opacity-90 pointer-events-none select-none">
+            src="images/ring.png"
+            class="w-20 mt-4 mx-auto">
 
-        <!-- ================= RABAT ================= -->
+        <a
+            id="discoverBtn"
+            href="#invitation"
+            class="mt-8 inline-block
+                   px-10 py-4
+                   rounded-full
+                   bg-gradient-to-r
+                   from-sky-400 to-blue-600
+                   text-white font-semibold
+                   shadow-xl
+                   hover:scale-105
+                   transition-all duration-300">
 
-       <div id="flap" class="absolute
-                              top-0
-                             left-0
-                              w-full
-                               h-[360px]
-                              z-30
-                             origin-top
-                             transition-all
-                              duration-[1800ms]">
-                            
- <!-- Triangle principal -->
+            Découvrir l'invitation
 
-<div
-    class="absolute
-           top-0
-           left-1/2
-           -translate-x-1/2
-           w-full
-           h-[360px]"
+        </a>
 
-    style="
-    clip-path:polygon(0 0,100% 0,50% 100%);
+    </div>
 
-    background:
-    linear-gradient(
-    180deg,
-    #ffffff 10%,
-    #f8fbff 65%,
-    #eef6ff 100%);
-
-    box-shadow:
-    0 15px 30px rgba(0,0,0,.12),
-    inset 0 8px 12px rgba(255,255,255,.8),
-    inset 0 -10px 15px rgba(0,0,0,.05);
-">
-</div>
-
-            <!-- Ombre du pli gauche -->
-
-            <div class="absolute inset-0"
-                  style="
-                clip-path:polygon(0 0,50% 100%,0 10%);
-                background:
-                linear-gradient(
-                225deg,
-                 rgba(91, 158, 205, .45) 0%,
-                 rgba(137, 196, 232, .28) 45%,
-                transparent 80%">
-            
-            </div>
-
-            <!-- Ombre du pli droit -->
-
-            <div
-                class="absolute inset-0"
-                style="
-                clip-path:polygon(100% 0,100% 10%,50% 100%);
-                background:
-                linear-gradient(
-                 135deg,
-    rgba(91, 158, 205, .45) 0%,
-    rgba(137, 196, 232, .28) 45%,
-    transparent 80%">
-            </div>
-
-            <!-- Reflet gauche -->
-
-            <div class="absolute left-0 top-0 w-full h-full opacity-0"
-                style="
-                clip-path:polygon(0 0,50% 100%,49% 100%);
-                border-right:1px solid rgba(255,255,255,.8); ">
-            </div>
-
-            <!-- Reflet droit -->
-
-            <div class="absolute right-0 top-0 w-full h-full opacity-60"
-                style="
-                clip-path:polygon(100% 0,51% 100%,100% 100%);
-                border-left:1px solid rgba(255,255,255,.8);">
-            </div>
-     </div>
-
-            <!-- Contenu du rabat -->
-
-          
-
-        
-        <!-- Corps de la lettre -->
-
-        <div id="letterContent" class="relative
-                          z-10
-                          flex flex-col
-                          justify-center
-                          items-center
-                          h-[650px]
-                          pt-[120px]
-                          opacity-0">
-
-    <h2
-        class="text-6xl text-sky-700"
-        style="font-family:'Great Vibes',cursive;">
-
-        Bienvenue
-
-    </h2>
-
-    <p
-        class="mt-6
-               text-3xl
-               text-slate-700"
-        style="font-family:'Cormorant Garamond',serif;">
-
-        au mariage de
-
-    </p>
-
-    <h1
-        class="mt-4
-               text-7xl
-               text-sky-800"
-        style="font-family:'Great Vibes',cursive;">
-
-        Nourhene
-
-    </h1>
-
-    <img
-        src="images/ring.png"
-        class="w-20 mt-2">
-<a
-    id="discoverBtn"
-    href="#invitation"
-
-    class="mt-2
-           px-10
-           py-4
-           rounded-full
-           bg-gradient-to-r
-           from-sky-400
-           to-blue-600
-           text-white
-           font-semibold
-           shadow-xl
-           opacity-0
-           pointer-events-none
-           transition-all
-           duration-700
-           hover:scale-105">
-
-    Découvrir l'invitation
-
-</a>
-</div>
-
-  <!-- ================= CACHET ================= -->
-
-<a
-    id="seal"
-    href="javascript:void(0);"
-
-    class="seal-animation
-           absolute
-           left-1/2
-           top-[285px]
-           -translate-x-1/2
-           z-50
-           w-[135px]
-           h-[135px]
-           cursor-pointer
-           transition-all
-           duration-500
-           hover:scale-105">
-
-    <img
-        id="sealImage"
-        src="images/N.png"
-        alt="Monogramme N"
-
-        class="w-full
-               h-full
-               object-contain
-               select-none
-               pointer-events-none">
-
-</a>
-</div>
-</div>
 </section>
+            
+           
 
+            <!-- ================= RABAT ================= -->
+
+            <div id="flap"
+                 class="absolute top-0 left-0 w-full h-[360px] z-30
+                        origin-top transition-all duration-[1800ms]">
+
+                <!-- TON TRIANGLE PRINCIPAL -->
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2
+                           w-full h-[360px]"
+                    style="
+                    clip-path:polygon(0 0,100% 0,50% 100%);
+                    background:linear-gradient(
+                        180deg,
+                        #ffffff 10%,
+                        #f8fbff 65%,
+                        #eef6ff 100%);
+                    box-shadow:
+                        0 15px 30px rgba(0,0,0,.12),
+                        inset 0 8px 12px rgba(255,255,255,.8),
+                        inset 0 -10px 15px rgba(0,0,0,.05);
+                    ">
+                </div>
+
+                <!-- TON OMBRE GAUCHE -->
+                <div class="absolute inset-0"
+                     style="
+                     clip-path:polygon(0 0,50% 100%,0 10%);
+                     background:linear-gradient(
+                         225deg,
+                         rgba(91,158,205,.45) 0%,
+                         rgba(137,196,232,.28) 45%,
+                         transparent 80%);
+                     ">
+                </div>
+
+                <!-- TON OMBRE DROITE -->
+                <div class="absolute inset-0"
+                     style="
+                     clip-path:polygon(100% 0,100% 10%,50% 100%);
+                     background:linear-gradient(
+                         135deg,
+                         rgba(91,158,205,.45) 0%,
+                         rgba(137,196,232,.28) 45%,
+                         transparent 80%);
+                     ">
+                </div>
+
+            </div>
+
+            <!-- ================= SCEAU ================= -->
+
+            <a
+                id="seal"
+                href="javascript:void(0);"
+                class="seal-animation absolute
+                       left-1/2 top-[285px]
+                       -translate-x-1/2 z-50
+                       w-[135px] h-[135px]
+                       cursor-pointer
+                       transition-all duration-500
+                       hover:scale-105">
+
+                <img
+                    id="sealImage"
+                    src="images/N.png"
+                    alt="Monogramme N"
+                    class="w-full h-full object-contain
+                           select-none pointer-events-none">
+
+            </a>
+
+    
         <!-- INVITATION -->
 
        <section id="invitation" class="flex justify-center py-12">
