@@ -795,23 +795,57 @@ img {
 #accueil {
     margin-bottom: 20px;
 }
-/* =========================
-   LETTRE ACCUEIL - TÉLÉPHONE
-========================= */
+/* =========================================
+   ACCUEIL - FORMAT PLEIN ÉCRAN TÉLÉPHONE
+========================================= */
 
 @media (max-width: 640px) {
 
+    /* La section prend tout l'écran */
     #accueil {
-        padding: 0;
-        min-height: 100vh;
+        width: 100vw !important;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
+    /* Conteneur de l'enveloppe */
     #accueil > div {
-        width: 100%;
-        max-width: 100%;
-        min-height: 100vh;
-        height: 100vh;
-        border-radius: 0;
+        width: 100vw !important;
+        max-width: 100vw !important;
+
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+
+        margin: 0 !important;
+    }
+
+    /* La vraie carte */
+    #accueil .envelope-arrival {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+
+        border-radius: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Bordure florale */
+    #accueil .envelope-arrival > img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* Rabat */
+    #flap {
+        width: 100% !important;
+        height: 42dvh !important;
     }
 
 }
