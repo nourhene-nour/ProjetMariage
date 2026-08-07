@@ -515,7 +515,7 @@ img {
     /* Rabat */
 
     #flap {
-        height: 125px !important;
+        height: 128px !important;
     }
 
     #flap > div {
@@ -526,7 +526,7 @@ img {
 
     .flap::before,
     .flap::after {
-        height: 130px;
+        height: 120px;
     }
 
 
@@ -699,7 +699,7 @@ img {
     }
 
     #Pas-photo br {
-        display: none;
+       /* display: none;*/
     }
 
 
