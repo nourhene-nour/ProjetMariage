@@ -843,9 +843,17 @@ img {
     }
 
     /* Rabat */
+    @media (max-width: 640px) {
+
     #flap {
         width: 100% !important;
-        height: 65dvh !important;
+        height: 55dvh !important;
     }
+
+    #flap > div:first-child {
+        height: 55dvh !important;
+    }
+
+}
 
 }
