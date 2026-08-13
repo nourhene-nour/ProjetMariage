@@ -716,7 +716,7 @@ img {
     #Pas-photo p,
     #adresse p {
 
-        font-size: 15px !important;
+        font-size: 12px !important;
         line-height: 1.7 !important;
     }
 
@@ -726,11 +726,11 @@ img {
        ===================================================== */
 
     #invitation .space-y-2 {
-        font-size: 15px !important;
+        font-size: 13px !important;
     }
 
     #invitation .space-y-2 p {
-        font-size: 15px !important;
+        font-size: 13px !important;
     }
 
     #invitation img {
