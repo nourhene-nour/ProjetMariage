@@ -165,7 +165,7 @@ transform:translateY(-8px);
     height:310px;
     background:rgba(0,0,0,.12);
     transform:rotate(30deg);
-    filter:blur(4px);
+    filter:blur(1px);
 }
 
 /* Ombre côté droit */
@@ -178,7 +178,7 @@ transform:translateY(-8px);
     height:310px;
     background:rgba(0,0,0,.12);
     transform:rotate(-30deg);
-    filter:blur(4px);
+    filter:blur(1px);
 }
 
 /* Animation de l'enveloppe */
@@ -335,26 +335,9 @@ transform:translateY(-8px);
    Contenu de la lettre
 =========================== */
 
-#letterContent{
-
-    opacity:0;
-
-    transform:translateY(40px);
-
-    transition:
-
-        opacity 1s ease,
-
-        transform 1s ease;
-
-}
-
-#letterContent.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
+#letterContent {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Animation du sceau */
@@ -387,6 +370,90 @@ transform:translateY(-8px);
 
     pointer-events:auto;
 
+}
+
+/* =====================================================
+   RESPONSIVE - TELEPHONE
+===================================================== */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* =========================
+   Téléphones
+========================= */
+
+@media (max-width: 640px) {
+
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* Neige */
+    .snowflake {
+        font-size: 9px;
+    }
+
+    /* Particules */
+    .spark {
+        width: 3px;
+        height: 3px;
+    }
+
+    /* Texte */
+    h1,
+    h2,
+    h3,
+    p {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    /* Carte */
+    .card,
+    .floating-card {
+        max-width: 94vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Enveloppe */
+    .flap {
+        max-width: 100%;
+    }
+
+    /* Évite que les ombres du rabat dépassent */
+    .flap::before,
+    .flap::after {
+        height: 220px;
+    }
+
+    /* Contenu de la lettre */
+    #letterContent {
+        max-width: 92vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Boutons */
+    button {
+        max-width: 90vw;
+    }
 }
 
 
@@ -428,7 +495,6 @@ transform:translateY(-8px);
         transform: scale(.85);
     }
 }
-
 /* =========================================================
    RESPONSIVE TELEPHONE
    ========================================================= */
@@ -515,7 +581,7 @@ img {
     /* Rabat */
 
     #flap {
-        height: 128px !important;
+        height: 125px !important;
     }
 
     #flap > div {
@@ -526,7 +592,7 @@ img {
 
     .flap::before,
     .flap::after {
-        height: 120px;
+        height: 130px;
     }
 
 
@@ -568,9 +634,9 @@ img {
        ===================================================== */
 
     #discoverBtn {
-        font-size: 9px !important;
-        padding: 7px 14px !important;
-        margin-top: 1px !important;
+        font-size: 13px !important;
+        padding: 10px 18px !important;
+        margin-top: 5px !important;
         white-space: nowrap;
     }
 
@@ -598,7 +664,7 @@ img {
 
         width: 100% !important;
         max-width: 360px !important;
-        min-height: 600px !important;
+        min-height: 500px !important;
     }
 
 
@@ -612,7 +678,7 @@ img {
     #Pas-photo > div > div,
     #adresse > div > div {
 
-        inset: 14px !important;
+        inset: 18px !important;
         padding: 25px 18px !important;
         border-radius: 22px !important;
     }
@@ -632,7 +698,7 @@ img {
     #Pas-photo h2,
     #adresse h2 {
 
-        font-size: 1.2rem !important;
+        font-size: 1.8rem !important;
         line-height: 1.2;
         margin-bottom: 20px !important;
     }
@@ -695,7 +761,7 @@ img {
 
     #Pas-photo img {
         width: 55px !important;
-        margin-top: 8px;
+        margin-top: 5px;
     }
 
     #Pas-photo br {
@@ -792,68 +858,371 @@ img {
     }
 }
 
+/* Réduit uniquement l'espace après l'enveloppe */
 #accueil {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
-/* =========================================
-   ACCUEIL - FORMAT PLEIN ÉCRAN TÉLÉPHONE
-========================================= */
 
 @media (max-width: 640px) {
 
-    /* La section prend tout l'écran */
     #accueil {
         width: 100vw !important;
         height: 100dvh !important;
         min-height: 100dvh !important;
         padding: 0 !important;
         margin: 0 !important;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
-    /* Conteneur de l'enveloppe */
     #accueil > div {
         width: 100vw !important;
         max-width: 100vw !important;
-
         height: 100dvh !important;
         min-height: 100dvh !important;
-
         margin: 0 !important;
     }
 
-    /* La vraie carte */
     #accueil .envelope-arrival {
         width: 100% !important;
-        height: 100% !important;
-        min-height: 100% !important;
-
+        height: 100dvh !important;
+        min-height: 100dvh !important;
         border-radius: 0 !important;
-        overflow: hidden !important;
     }
-
-    /* Bordure florale */
-    #accueil .envelope-arrival > img {
-        width: 80% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
-    /* Rabat */
-    @media (max-width: 640px) {
 
     #flap {
         width: 100% !important;
-        height: 55dvh !important;
-    }
-
-    #flap > div:first-child {
-        height: 55dvh !important;
+        height: 58dvh !important;
     }
 
 }
+
+/* ===========================
+   ESPACEMENT ENTRE LES SECTIONS
+=========================== */
+
+#accueil {
+    position: relative;
+    min-height: 100vh;
+}
+
+#letterSection {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#invitation {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* =====================================================
+   PAGE ENVELOPPE
+===================================================== */
+
+#envelopePage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    perspective: 1600px;
+}
+
+
+/* =====================================================
+   IMAGE DE FOND
+===================================================== */
+
+#envelopeBackground {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("images/ww(1).png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+}
+
+
+/* =====================================================
+   RABAT
+===================================================== */
+
+#flap {
+
+    position: absolute;
+
+    /*
+       Le rabat commence tout en haut
+       et descend jusqu'au centre.
+    */
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 58vh;
+
+    z-index: 10;
+
+    transform-origin: top center;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 1.6s cubic-bezier(.77,0,.18,1);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   SURFACE DU RABAT
+===================================================== */
+
+.flap-surface {
+
+    position: absolute;
+
+    inset: 0;
+
+    /*
+       Forme correspondant à ta photo :
+       deux coins supérieurs
+       et une pointe très basse au centre.
+    */
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    /*
+       On reprend la même image que le background.
+       Cela permet d'avoir exactement la même texture.
+    */
+
+    background-image: url("images/ww(1).png");
+
+    background-size: 100vw auto;
+
+    background-position:
+        center top;
+
+    background-repeat: no-repeat;
+
+    /*
+       Très léger voile glacé
+    */
+
+    filter:
+        brightness(1.03)
+        saturate(.85);
+
+    backface-visibility: hidden;
+
+}
+
+
+/* =====================================================
+   OMBRE DIAGONALE GAUCHE
+===================================================== */
+
+.flap-shadow-left {
+
+    position: absolute;
+
+    inset: 0;
+
+    clip-path: polygon(
+        0 0,
+        7% 0,
+        50% 100%,
+        46% 100%
+    );
+
+    background:
+        linear-gradient(
+            225deg,
+            rgba(83,135,177,.20) 0%,
+            rgba(112,160,197,.13) 30%,
+            rgba(180,210,232,.08) 55%,
+            transparent 85%
+        );
+
+    filter: blur(2px);
+
+}
+
+
+/* =====================================================
+   OMBRE DIAGONALE DROITE
+===================================================== */
+
+.flap-shadow-right {
+
+    position: absolute;
+
+    inset: 0;
+
+    clip-path: polygon(
+        93% 0,
+        100% 0,
+        54% 100%,
+        50% 100%
+    );
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(83,135,177,.22) 0%,
+            rgba(112,160,197,.14) 30%,
+            rgba(180,210,232,.08) 55%,
+            transparent 85%
+        );
+
+    filter: blur(2px);
+
+}
+
+
+/* =====================================================
+   REFLET DU PLI
+===================================================== */
+
+.flap-highlight {
+
+    position: absolute;
+
+    inset: 0;
+
+    clip-path: polygon(
+        0 0,
+        50% 100%,
+        51% 100%,
+        100% 0,
+        98% 0,
+        50% 96%,
+        2% 0
+    );
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.25),
+            transparent 25%,
+            transparent 75%,
+            rgba(255,255,255,.25)
+        );
+
+    opacity: .7;
+
+}
+
+
+/* =====================================================
+   RABAT OUVERT
+===================================================== */
+
+#flap.open {
+
+    transform:
+        rotateX(-180deg);
+
+}
+
+#seal {
+
+    position: absolute;
+
+    left: 50%;
+
+    /*
+       Le sceau doit être exactement
+       à la pointe du rabat.
+    */
+
+    top: 51%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 150px;
+    height: 150px;
+
+    z-index: 30;
+
+    cursor: pointer;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+
+#seal img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+#seal:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.05);
+
+    filter:
+        drop-shadow(0 8px 14px rgba(70,130,180,.35));
+}
+
+/* =====================================================
+   TELEPHONE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    #envelopePage {
+        height: 100dvh;
+        min-height: 100dvh;
+    }
+
+
+    #envelopeBackground {
+
+        background-size: cover;
+
+        background-position: center center;
+    }
+
+
+    #flap {
+
+        height: 57dvh;
+
+    }
+
+
+    #seal {
+
+        width: 125px;
+        height: 125px;
+
+        top: 52%;
+    }
 
 }
