@@ -1,0 +1,704 @@
+/* =========================================================
+   ENVELOPPE 3D
+========================================================= */
+
+
+:root {
+
+    --paper-white: #fbfdff;
+
+    --ice-blue: #dcecf8;
+
+    --paper-shadow:
+        rgba(62, 106, 140, .22);
+
+    --deep-shadow:
+        rgba(24, 62, 92, .30);
+
+    --seal-size: 145px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+}
+
+
+body {
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            #ffffff 0%,
+            #edf7ff 45%,
+            #d8eaf7 100%
+        );
+
+}
+
+
+/* =========================================================
+   SCÈNE
+========================================================= */
+
+.scene {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100dvh;
+
+    min-height: 600px;
+
+    display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    /*
+       C'est ici que commence réellement
+       notre espace 3D.
+    */
+
+    perspective: 1800px;
+
+    perspective-origin:
+        50% 43%;
+
+}
+
+
+/* =========================================================
+   LUMIÈRE AMBIANTE
+========================================================= */
+
+.ambient-glow {
+
+    position: absolute;
+
+    inset: -20%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(255,255,255,.85) 0%,
+            rgba(221,240,252,.40) 38%,
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+}
+
+
+/* =========================================================
+   ENVELOPPE
+========================================================= */
+
+.envelope {
+
+    position: relative;
+
+    width: min(920px, 88vw);
+
+    aspect-ratio: 1.52 / 1;
+
+    transform-style: preserve-3d;
+
+    z-index: 10;
+
+    filter:
+        drop-shadow(
+            0 35px 45px
+            rgba(45,82,110,.20)
+        );
+
+}
+
+
+/* =========================================================
+   BACKGROUND DE L'ENVELOPPE
+========================================================= */
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background-color: #edf7ff;
+
+    /*
+       IMPORTANT :
+       mets ici ta vraie image.
+    */
+
+    background-image:
+        url("images/envelope-bg.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    box-shadow:
+
+        inset
+        0 0 0 1px
+        rgba(255,255,255,.65),
+
+        inset
+        0 -25px 35px
+        rgba(66,112,145,.08);
+
+}
+
+
+/* =========================================================
+   INTÉRIEUR
+========================================================= */
+
+.envelope-inside {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fdfefe 0%,
+            #edf7ff 70%,
+            #dcecf7 100%
+        );
+
+    box-shadow:
+        inset
+        0 0 45px
+        rgba(56,103,135,.12);
+
+}
+
+
+.inside-light {
+
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            rgba(255,255,255,.95),
+            transparent 62%
+        );
+
+    opacity: .75;
+
+}
+
+
+/* =========================================================
+   RABAT
+========================================================= */
+
+.flap {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    /*
+       C'est volontairement plus grand
+       qu'un petit triangle.
+    */
+
+    height: 68%;
+
+    z-index: 8;
+
+    transform-origin:
+        50% 0%;
+
+    transform-style:
+        preserve-3d;
+
+    will-change:
+        transform;
+
+}
+
+
+/* =========================================================
+   LES DEUX FACES
+========================================================= */
+
+.flap-front,
+.flap-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    backface-visibility:
+        hidden;
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+/* =========================================================
+   FACE AVANT
+========================================================= */
+
+.flap-front {
+
+    background:
+        linear-gradient(
+            180deg,
+            #e9f4fb 90%,
+            #f9f4fb 44%,
+            #e9f4fb 100%
+        );
+
+    box-shadow:
+
+        inset
+        0 -22px 30px
+        rgba(56,103,137,.08),
+
+        inset
+        0 4px 12px
+        rgba(255,255,255,.85);
+
+}
+
+
+/* =========================================================
+   REFLET
+========================================================= */
+
+.paper-sheen {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 25%,
+            rgba(255,255,255,.62) 45%,
+            transparent 62%
+        );
+
+    opacity: .55;
+
+    transform:
+        translateX(-100%);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   OMBRE DIAGONALE GAUCHE
+========================================================= */
+
+.flap-edge-shadow {
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 50%;
+
+    pointer-events: none;
+
+    opacity: .65;
+
+    filter: blur(3px);
+
+}
+
+
+.flap-edge-left {
+
+    left: 0;
+
+    clip-path:
+        polygon(
+            0 0,
+            10% 0,
+            100% 100%,
+            72% 100%
+        );
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(78,125,159,.32),
+            rgba(150,190,216,.10),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   OMBRE DIAGONALE DROITE
+========================================================= */
+
+.flap-edge-right {
+
+    right: 0;
+
+    clip-path:
+        polygon(
+            90% 0,
+            100% 0,
+            28% 100%,
+            0 100%
+        );
+
+    background:
+        linear-gradient(
+            225deg,
+            rgba(78,125,159,.32),
+            rgba(150,190,216,.10),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   DOS DU RABAT
+========================================================= */
+
+.flap-back {
+
+    background:
+        linear-gradient(
+            180deg,
+            #edf7fc,
+            #dcecf6
+        );
+
+    transform:
+        rotateX(180deg);
+
+}
+
+
+.back-light {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 15%,
+            rgba(255,255,255,.90),
+            transparent 65%
+        );
+
+}
+
+
+/* =========================================================
+   OMBRE DYNAMIQUE
+========================================================= */
+
+.moving-shadow {
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+
+    top: 49%;
+
+    height: 23%;
+
+    z-index: 6;
+
+    pointer-events: none;
+
+    clip-path:
+        polygon(
+            50 50,
+            50% 60%,
+            100% 0
+        );
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(35,74,104,.28),
+            rgba(35,74,104,.12) 48%,
+            transparent 75%
+        );
+
+    filter:
+        blur(12px);
+
+    opacity: .52;
+
+    transform-origin:
+        50% 0%;
+
+}
+
+
+/* =========================================================
+   SCEAU
+========================================================= */
+
+.seal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 61%;
+
+    width: var(--seal-size);
+    height: var(--seal-size);
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 30;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 9px 12px
+            rgba(37,73,101,.25)
+        );
+
+    will-change:
+        transform,
+        filter;
+
+}
+
+
+.seal img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   TEXTE
+========================================================= */
+
+.hint {
+
+    position: absolute;
+
+    bottom: 4.5vh;
+
+    z-index: 50;
+
+    margin: 0;
+
+    color:
+        rgba(54,96,125,.72);
+
+    font-size: 14px;
+
+    letter-spacing:
+        .12em;
+
+    text-transform:
+        uppercase;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   ÉTAT OUVERTURE
+========================================================= */
+
+.scene.is-opening {
+
+    cursor: wait;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    :root {
+
+        --seal-size:
+            105px;
+
+    }
+
+
+    .scene {
+
+        min-height:
+            100dvh;
+
+        perspective:
+            1200px;
+
+    }
+
+
+    .envelope {
+
+        width:
+            96vw;
+
+        aspect-ratio:
+            .70 / 1;
+
+    }
+
+
+    .flap {
+
+        height:
+            56%;
+
+    }
+
+
+    .seal {
+
+        top:
+            52%;
+
+    }
+
+
+    .hint {
+
+        bottom:
+            3vh;
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            .09em;
+
+    }
+
+}
+
+.envelope-decoration {
+    position: absolute;
+
+    z-index: 15;
+
+    width: 200px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(50,100,130,.15)
+        );
+}
+
+
+.decoration-left {
+    left: 0px;
+    bottom: 400px;
+
+    transform: rotate(-0deg);
+}
+
+
+.decoration-right {
+    right: 0px;
+    bottom: 20px;
+
+    transform: rotate(0deg);
+}
+
