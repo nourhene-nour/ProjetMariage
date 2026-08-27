@@ -61,7 +61,11 @@ const observer = new IntersectionObserver((entries)=>{
 
 });
 
-document.querySelectorAll("section").forEach(section=>{
+document.querySelectorAll("section").forEach(section => {
+
+    if (section.id === "letterSection") {
+        return;
+    }
 
     section.classList.add("opacity-0");
     section.classList.add("translate-y-12");
@@ -113,32 +117,7 @@ for(let i=0;i<25;i++){
     document.body.appendChild(s);
 
 }
-/* =======================
-   Cachet de la lettre
-======================= */
-const seal = document.getElementById("seal");
 
-seal.addEventListener("click", function (e) {
-
-    e.preventDefault();
-
-    // Empêche un deuxième clic
-    seal.style.pointerEvents = "none";
-
-    // Le rabat s'ouvre
-    flap.classList.add("open");
-
-    // Le contenu apparaît après l'ouverture
-    setTimeout(() => {
-        letterContent.classList.add("show");
-    }, 1500);
-
-    // Le bouton apparaît
-    setTimeout(() => {
-        discoverBtn.classList.add("show");
-    }, 2200);
-
-});
 
 
 
@@ -153,42 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const flap = document.getElementById("flap");
     const letterContent = document.getElementById("letterContent");
     const discoverBtn = document.getElementById("discoverBtn");
-    const bgMusic = document.getElementById("bgMusic");
-    // Vérification pour éviter les erreurs
-    if (!seal || !flap || !letterContent || !discoverBtn) {
-        console.error("Un ou plusieurs éléments sont introuvables.");
-        return;
-    }
+    const Music = document.getElementById("bgMusic");
+      // Démarre la musique
+if (bgMusic) {
+    bgMusic.volume = 0.25;
 
-    seal.addEventListener("click", function (e) {
-
-        e.preventDefault();
-        // Démarre la musique
-bgMusic.volume = 0.5;
-bgMusic.play().catch(error => {
-    console.log("Lecture audio bloquée :", error);
-});
-
-        // Animation du cachet
-        seal.classList.add("clicked");
-
-        // Ouverture du rabat
-        setTimeout(() => {
-            flap.classList.add("open");
-        }, 300);
-
-        // Apparition du contenu
-        setTimeout(() => {
-            letterContent.classList.add("show");
-        }, 1500);
-
-        // Apparition du bouton
-        setTimeout(() => {
-            discoverBtn.classList.add("show");
-        }, 2200);
-
+    bgMusic.play().catch(error => {
+        console.log("Lecture audio bloquée :", error);
     });
-    
+}
+   
     discoverBtn.addEventListener("click", function (e) {
 
     e.preventDefault();
@@ -204,4 +157,27 @@ bgMusic.play().catch(error => {
 
 });
 
-  
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const seal = document.getElementById("seal");
+    const flap = document.getElementById("flap");
+
+    if (!seal || !flap) {
+        return;
+    }
+
+    seal.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        // Ouvre le rabat
+        flap.classList.add("open");
+
+        // Après l'animation, aller vers invitation.html
+        setTimeout(() => {
+            window.location.href = "invitation.html";
+        }, 1600);
+
+    });
+
+});
