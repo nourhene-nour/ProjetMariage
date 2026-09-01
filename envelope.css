@@ -599,6 +599,43 @@ body {
     cursor: wait;
 
 }
+/* =========================================================
+ Décoration
+========================================================= */
+
+.envelope-decoration {
+    position: absolute;
+
+    z-index: 15;
+
+    width: 200px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(50,100,130,.15)
+        );
+}
+
+
+.decoration-left {
+    left: 0px;
+    bottom: 380px;
+
+    transform: rotate(-0deg);
+}
+
+
+.decoration-right {
+    right: 0px;
+    bottom: 15px;
+
+    transform: rotate(0deg);
+}
 
 
 /* =========================================================
@@ -667,38 +704,3 @@ body {
     }
 
 }
-
-.envelope-decoration {
-    position: absolute;
-
-    z-index: 15;
-
-    width: 200px;
-
-    pointer-events: none;
-
-    user-select: none;
-
-    filter:
-        drop-shadow(
-            0 5px 8px
-            rgba(50,100,130,.15)
-        );
-}
-
-
-.decoration-left {
-    left: 0px;
-    bottom: 345px;
-
-    transform: rotate(-0deg);
-}
-
-
-.decoration-right {
-    right: 0px;
-    bottom: 5px;
-
-    transform: rotate(0deg);
-}
-
