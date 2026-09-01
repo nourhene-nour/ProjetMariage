@@ -1233,3 +1233,74 @@ img {
     direction: rtl;
     text-align: center;
 }
+
+.wedding-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    font-family: "Cormorant Garamond", serif;
+    color: #315a7d;
+
+    margin: 30px auto;
+}
+
+
+/* Les deux côtés */
+.date-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 140px;
+}
+
+
+/* Ligne décorative */
+.date-line {
+    width: 100%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #9bb9d1,
+        transparent
+    );
+
+    margin: 8px 0;
+}
+
+
+/* Centre : le jour */
+.date-center {
+    padding: 0 25px;
+
+    border-left: 1px solid #b7cde0;
+    border-right: 1px solid #b7cde0;
+}
+
+
+/* 12 */
+.day {
+    font-size: 70px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+
+/* DÉCEMBRE */
+.month {
+    font-size: 22px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+
+/* 2026 */
+.year {
+    font-size: 22px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
