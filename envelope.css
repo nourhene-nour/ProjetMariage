@@ -689,7 +689,7 @@ body {
 
 .decoration-left {
     left: 0px;
-    bottom: 350px;
+    bottom: 345px;
 
     transform: rotate(-0deg);
 }
@@ -697,7 +697,7 @@ body {
 
 .decoration-right {
     right: 0px;
-    bottom: 20px;
+    bottom: 5px;
 
     transform: rotate(0deg);
 }
