@@ -1,1237 +1,128 @@
-/* ===========================
-   NEIGE
-=========================== */
-
-.snowflake{
-    position:fixed;
-    top:-20px;
-    color:#BFE6FF;
-    font-size:12px;
-    opacity:.8;
-    pointer-events:none;
-    animation:fall linear infinite;
-    z-index:1;
-}
-
-@keyframes fall{
-
-    from{
-        transform:translateY(-10vh);
-    }
-
-    to{
-        transform:translateY(110vh);
-    }
-
-}
-
-/* ===========================
-  Particules lumineuses
-=========================== */
-
-.spark{
-
-    position:fixed;
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-    0 0 10px white,
-    0 0 20px #9fd8ff;
-
-    opacity:.7;
-
-    animation:float 10s linear infinite;
-
-}
-
-@keyframes float{
-
-    from{
-
-        transform:translateY(100vh);
-
-    }
-
-    to{
-
-        transform:translateY(-20vh);
-
-    }
-
-}
-
-/* ===========================
-  Prénom brillance
-=========================== */
-
-.glow{
-
-    animation:glow 3s ease-in-out infinite;
-
-}
-
-@keyframes glow{
-
-0%,100%{
-
-text-shadow:
-
-0 0 5px white,
-
-0 0 10px #9fd8ff,
-
-0 0 20px #7cc8ff;
-
-}
-
-50%{
-
-text-shadow:
-
-0 0 15px white,
-
-0 0 30px #9fd8ff,
-
-0 0 45px #7cc8ff;
-
-}
-
-}
-
-/* ===========================
-   Carte 
-=========================== */
-
-.card{
-
-animation:cardFloat 6s ease-in-out infinite;
-
-}
-
-@keyframes cardFloat{
-
-0%,100%{
-
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-}
-
-.floating-card{
-    animation: cardFloat 6s ease-in-out infinite;
-}
-
-/* ===========================
-  ombre d'enveloppe
-=========================== */
-.flap{
-    clip-path: polygon(0 0,100% 0,50% 100%);
-    background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fcfdff 30%,
-        #f4f8ff 65%,
-        #edf5ff 100%);
-
-    box-shadow:
-        0 18px 35px rgba(0,0,0,.18),
-        inset 0 10px 12px rgba(255,255,255,.85),
-        inset 0 -12px 18px rgba(0,0,0,.06);
-
-    position: absolute;
-    overflow: visible;
-}
-
-/* Ombre côté gauche */
-.flap::before{
-    content:"";
-    position:absolute;
-    left:12%;
-    top:18px;
-    width:3px;
-    height:310px;
-    background:rgba(0,0,0,.12);
-    transform:rotate(30deg);
-    filter:blur(1px);
-}
-
-/* Ombre côté droit */
-.flap::after{
-    content:"";
-    position:absolute;
-    right:12%;
-    top:18px;
-    width:3px;
-    height:310px;
-    background:rgba(0,0,0,.12);
-    transform:rotate(-30deg);
-    filter:blur(1px);
-}
-
-/* Animation de l'enveloppe */
-
-@keyframes envelopeIntro {
-
-    0%{
-        opacity:0;
-        transform:scale(.88) rotate(-6deg);
-    }
-
-    25%{
-        opacity:1;
-        transform:scale(1.03) rotate(2deg);
-    }
-
-    55%{
-        transform:scale(1) rotate(-1deg);
-    }
-
-    80%{
-        transform:scale(1.01) rotate(.5deg);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1) rotate(0);
-    }
-
-}
-
-.envelope-intro{
-
-    animation:envelopeIntro 2s ease forwards;
-
-}
-
-/* Animation du cachet */
-
-@keyframes sealBounce{
-
-    0%{
-        transform:translateX(-50%) scale(.2);
-        opacity:0;
-    }
-
-    55%{
-        transform:translateX(-50%) scale(1.18);
-        opacity:1;
-    }
-
-    70%{
-        transform:translateX(-50%) scale(.92);
-    }
-
-    85%{
-        transform:translateX(-50%) scale(1.05);
-    }
-
-    100%{
-        transform:translateX(-50%) scale(1);
-    }
-
-}
-
-.seal-intro{
-
-    animation:sealBounce 1.5s ease;
-    animation-delay:1s;
-    animation-fill-mode:both;
-
-}
-
-/* Animation du rabat */
-@keyframes openFlap{
-
-    0%{
-
-        transform:rotateX(0deg);
-
-    }
-
-    100%{
-
-        transform:rotateX(-180deg);
-
-    }
-
-}
-
-#flap{
-
-    transform-origin:top center;
-
-    transform-style:preserve-3d;
-
-    backface-visibility:hidden;
-
-}
-
-/* Apparittion du contenu*/
-
-@keyframes fadeContent{
-
-    from{
-
-        opacity:0;
-        transform:translateY(25px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
-.letter-content{
-
-    opacity:0;
-
-}
-
-/* ===========================
-   Animation du rabat
-=========================== */
-
-#flap{
-
-    transform-origin:top center;
-
-    transform-style:preserve-3d;
-
-    backface-visibility:hidden;
-
-    transition:transform 1.8s cubic-bezier(.23,.86,.34,1);
-
-}
-
-/* Rabat ouvert */
-
-#flap.open{
-
-    transform:perspective(1800px)
-              rotateX(-178deg);
-
-}
-
-
-/* ===========================
-   Contenu de la lettre
-=========================== */
-
-#letterContent {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Animation du sceau */
-
-#seal{
-
-    transition:
-        transform .35s ease,
-        opacity .6s ease;
-
-}
-
-#seal.clicked{
-
-    transform:
-        translateX(-50%)
-        scale(.75);
-
-    opacity:0;
-
-    pointer-events:none;
-
-}
-
-/* Apparition du bouton */
-
-#discoverBtn.show{
-
-    opacity:1;
-
-    pointer-events:auto;
-
-}
-
-/* =====================================================
-   RESPONSIVE - TELEPHONE
-===================================================== */
-
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
+/* =========================================================
+   RESET GENERAL
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
-/* =========================
-   Téléphones
-========================= */
-
-@media (max-width: 640px) {
-
-    body {
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
-
-    /* Neige */
-    .snowflake {
-        font-size: 9px;
-    }
-
-    /* Particules */
-    .spark {
-        width: 3px;
-        height: 3px;
-    }
-
-    /* Texte */
-    h1,
-    h2,
-    h3,
-    p {
-        max-width: 100%;
-        overflow-wrap: break-word;
-    }
-
-    /* Carte */
-    .card,
-    .floating-card {
-        max-width: 94vw;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Enveloppe */
-    .flap {
-        max-width: 100%;
-    }
-
-    /* Évite que les ombres du rabat dépassent */
-    .flap::before,
-    .flap::after {
-        height: 220px;
-    }
-
-    /* Contenu de la lettre */
-    #letterContent {
-        max-width: 92vw;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Images */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Boutons */
-    button {
-        max-width: 90vw;
-    }
-}
-
-
-/* =========================
-   Très petits téléphones
-   320px - 380px
-========================= */
-
-@media (max-width: 380px) {
-
-    .card,
-    .floating-card {
-        max-width: 96vw;
-    }
-
-    #letterContent {
-        max-width: 94vw;
-    }
-
-    .flap::before,
-    .flap::after {
-        height: 180px;
-    }
-}
-
-
-/* =========================
-   Téléphone horizontal
-========================= */
-
-@media (max-height: 500px) and (orientation: landscape) {
-
-    body {
-        min-height: 100vh;
-    }
-
-    .card,
-    .floating-card {
-        transform: scale(.85);
-    }
-}
-/* =========================================================
-   RESPONSIVE TELEPHONE
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
+html {
+    scroll-behavior: smooth;
 }
 
 html,
 body {
     width: 100%;
-    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
     overflow-x: hidden;
 }
 
-img {
-    max-width: 100%;
-}
-
 
 /* =========================================================
-   MENU MOBILE
-   ========================================================= */
+   FOND
+========================================================= */
 
-@media (max-width: 640px) {
-
-    nav {
-        top: auto !important;
-        right: auto !important;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%) !important;
-        width: auto;
-        z-index: 100;
-    }
-
-    nav > div {
-        flex-direction: row !important;
-        gap: 8px !important;
-        justify-content: center;
-    }
-
-    nav a {
-        width: 42px !important;
-        height: 42px !important;
-        flex-shrink: 0;
-    }
-
-    nav i {
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       CONTENU PRINCIPAL
-       ===================================================== */
-
-    main {
-        width: 100%;
-        max-width: 100% !important;
-        padding-top: 30px !important;
-        padding-bottom: 80px !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-
-    /* =====================================================
-       ENVELOPPE
-       ===================================================== */
-
-    #accueil {
-        width: 100%;
-        min-height: 100svh;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-    }
-
-    #accueil > div {
-        width: 100% !important;
-        max-width: 360px !important;
-    }
-
-    /* Rabat */
-
-    #flap {
-        height: 125px !important;
-    }
-
-    #flap > div {
-        height: 125px !important;
-    }
-
-    /* Ombres du rabat */
-
-    .flap::before,
-    .flap::after {
-        height: 130px;
-    }
-
-
-    /* =====================================================
-       CONTENU DE LA LETTRE
-       ===================================================== */
-
-    #letterContent {
-        height: 310px !important;
-        padding-top: 45px !important;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    #letterContent h2 {
-        font-size: 2.8rem !important;
-        line-height: 1.1;
-    }
-
-    #letterContent p {
-        font-size: 1.25rem !important;
-        margin-top: 10px !important;
-    }
-
-    #letterContent h1 {
-        font-size: 4rem !important;
-        line-height: 1;
-        margin-top: 10px !important;
-    }
-
-    #letterContent img {
-        width: 48px !important;
-        margin-top: 5px;
-    }
-
-
-    /* =====================================================
-       BOUTON DECOUVRIR
-       ===================================================== */
-
-    #discoverBtn {
-        font-size: 13px !important;
-        padding: 10px 18px !important;
-        margin-top: 5px !important;
-        white-space: nowrap;
-    }
-
-
-    /* =====================================================
-       CACHET
-       ===================================================== */
-
-    #seal {
-        width: 85px !important;
-        height: 85px !important;
-        top: 100px !important;
-    }
-
-
-    /* =====================================================
-       TOUTES LES CARTES
-       ===================================================== */
-
-    #invitation > div,
-    #notes-fr > div,
-    #notes-ar > div,
-    #Pas-photo > div,
-    #adresse > div {
-
-        width: 100% !important;
-        max-width: 360px !important;
-        min-height: 500px !important;
-    }
-
-
-    /* =====================================================
-       CONTENU INTERIEUR DES CARTES
-       ===================================================== */
-
-    #invitation > div > div,
-    #notes-fr > div > div,
-    #notes-ar > div > div,
-    #Pas-photo > div > div,
-    #adresse > div > div {
-
-        inset: 18px !important;
-        padding: 25px 18px !important;
-        border-radius: 22px !important;
-    }
-
-
-    /* =====================================================
-       TITRES DES CARTES
-       ===================================================== */
-
-    #invitation h2 {
-        font-size: 3rem !important;
-        line-height: 1;
-    }
-
-    #notes-fr h2,
-    #notes-ar h2,
-    #Pas-photo h2,
-    #adresse h2 {
-
-        font-size: 1.8rem !important;
-        line-height: 1.2;
-        margin-bottom: 20px !important;
-    }
-
-
-    /* =====================================================
-       TEXTES
-       ===================================================== */
-
-    #invitation p,
-    #notes-fr p,
-    #notes-fr li,
-    #notes-ar p,
-    #notes-ar li,
-    #Pas-photo p,
-    #adresse p {
-
-        font-size: 15px !important;
-        line-height: 1.7 !important;
-    }
-
-
-    /* =====================================================
-       INVITATION
-       ===================================================== */
-
-    #invitation .space-y-2 {
-        font-size: 15px !important;
-    }
-
-    #invitation .space-y-2 p {
-        font-size: 15px !important;
-    }
-
-    #invitation img {
-        width: 45px !important;
-    }
-
-
-    /* =====================================================
-       NOTES
-       ===================================================== */
-
-    #notes-fr ul,
-    #notes-ar ul {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-top: 15px !important;
-    }
-
-    #notes-fr li,
-    #notes-ar li {
-        margin-bottom: 8px;
-    }
-
-
-    /* =====================================================
-       PAS DE PHOTOS
-       ===================================================== */
-
-    #Pas-photo img {
-        width: 55px !important;
-        margin-top: 5px;
-    }
-
-    #Pas-photo br {
-        display: none;
-    }
-
-
-    /* =====================================================
-       GOOGLE MAPS
-       ===================================================== */
-
-    #adresse a {
-        font-size: 13px !important;
-        padding: 11px 18px !important;
-        white-space: nowrap;
-    }
-
-
-    /* =====================================================
-       COMPTE A REBOURS
-       ===================================================== */
-
-    #countdown {
-        width: 100%;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 8px !important;
-        margin-top: 25px !important;
-    }
-
-    #countdown > div {
-        padding: 10px !important;
-    }
-
-    #countdown div div {
-        font-size: 1.25rem !important;
-    }
-
-    #countdown p {
-        font-size: 12px !important;
-    }
-
-
-    /* =====================================================
-       NEIGE ET PARTICULES
-       ===================================================== */
-
-    .snowflake {
-        font-size: 8px;
-    }
-
-    .spark {
-        width: 3px;
-        height: 3px;
-    }
-}
-
-
-/* =========================================================
-   PETITS TELEPHONES
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    #accueil > div,
-    #invitation > div,
-    #notes-fr > div,
-    #notes-ar > div,
-    #Pas-photo > div,
-    #adresse > div {
-
-        max-width: 330px !important;
-    }
-
-    #letterContent h2 {
-        font-size: 2.4rem !important;
-    }
-
-    #letterContent h1 {
-        font-size: 3.5rem !important;
-    }
-
-    #seal {
-        width: 75px !important;
-        height: 75px !important;
-    }
-
-    nav a {
-        width: 38px !important;
-        height: 38px !important;
-    }
-
-    nav > div {
-        gap: 5px !important;
-    }
-}
-
-/* Réduit uniquement l'espace après l'enveloppe */
-#accueil {
-    margin-bottom: 40px;
-}
-
-@media (max-width: 640px) {
-
-    #accueil {
-        width: 100vw !important;
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    #accueil > div {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-        margin: 0 !important;
-    }
-
-    #accueil .envelope-arrival {
-        width: 100% !important;
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-        border-radius: 0 !important;
-    }
-
-    #flap {
-        width: 100% !important;
-        height: 58dvh !important;
-    }
-
-}
-
-/* ===========================
-   ESPACEMENT ENTRE LES SECTIONS
-=========================== */
-
-#accueil {
-    position: relative;
-    min-height: 100vh;
-}
-
-#letterSection {
-    position: relative;
-    min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-
-#invitation {
-    position: relative;
-    min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-/* =====================================================
-   PAGE ENVELOPPE
-===================================================== */
-
-#envelopePage {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    min-height: 100vh;
-    overflow: hidden;
-    perspective: 1600px;
-}
-
-
-/* =====================================================
-   IMAGE DE FOND
-===================================================== */
-
-#envelopeBackground {
-    position: absolute;
-    inset: 0;
-
-    background-image: url("images/ww(1).png");
-    background-position: center;
+body {
     background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   NEIGE
+========================================================= */
+
+.snowflake {
+    position: fixed;
+    top: -20px;
+    color: #bfe6ff;
+    font-size: 12px;
+    opacity: .8;
+    pointer-events: none;
+    animation: fall linear infinite;
+    z-index: 1;
+}
+
+@keyframes fall {
+
+    from {
+        transform: translateY(-10vh);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+
+}
+
+
+/* =========================================================
+   PARTICULES LUMINEUSES
+========================================================= */
+
+.spark {
+    position: fixed;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #9fd8ff;
+
+    opacity: .7;
+
+    pointer-events: none;
+
+    animation: float 10s linear infinite;
 
     z-index: 1;
 }
 
+@keyframes float {
 
-/* =====================================================
-   RABAT
-===================================================== */
-
-#flap {
-
-    position: absolute;
-
-    /*
-       Le rabat commence tout en haut
-       et descend jusqu'au centre.
-    */
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 58vh;
-
-    z-index: 10;
-
-    transform-origin: top center;
-
-    transform-style: preserve-3d;
-
-    transition:
-        transform 1.6s cubic-bezier(.77,0,.18,1);
-
-    pointer-events: none;
-}
-
-
-/* =====================================================
-   SURFACE DU RABAT
-===================================================== */
-
-.flap-surface {
-
-    position: absolute;
-
-    inset: 0;
-
-    /*
-       Forme correspondant à ta photo :
-       deux coins supérieurs
-       et une pointe très basse au centre.
-    */
-
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
-    /*
-       On reprend la même image que le background.
-       Cela permet d'avoir exactement la même texture.
-    */
-
-    background-image: url("images/ww(1).png");
-
-    background-size: 100vw auto;
-
-    background-position:
-        center top;
-
-    background-repeat: no-repeat;
-
-    /*
-       Très léger voile glacé
-    */
-
-    filter:
-        brightness(1.03)
-        saturate(.85);
-
-    backface-visibility: hidden;
-
-}
-
-
-/* =====================================================
-   OMBRE DIAGONALE GAUCHE
-===================================================== */
-
-.flap-shadow-left {
-
-    position: absolute;
-
-    inset: 0;
-
-    clip-path: polygon(
-        0 0,
-        7% 0,
-        50% 100%,
-        46% 100%
-    );
-
-    background:
-        linear-gradient(
-            225deg,
-            rgba(83,135,177,.20) 0%,
-            rgba(112,160,197,.13) 30%,
-            rgba(180,210,232,.08) 55%,
-            transparent 85%
-        );
-
-    filter: blur(2px);
-
-}
-
-
-/* =====================================================
-   OMBRE DIAGONALE DROITE
-===================================================== */
-
-.flap-shadow-right {
-
-    position: absolute;
-
-    inset: 0;
-
-    clip-path: polygon(
-        93% 0,
-        100% 0,
-        54% 100%,
-        50% 100%
-    );
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(83,135,177,.22) 0%,
-            rgba(112,160,197,.14) 30%,
-            rgba(180,210,232,.08) 55%,
-            transparent 85%
-        );
-
-    filter: blur(2px);
-
-}
-
-
-/* =====================================================
-   REFLET DU PLI
-===================================================== */
-
-.flap-highlight {
-
-    position: absolute;
-
-    inset: 0;
-
-    clip-path: polygon(
-        0 0,
-        50% 100%,
-        51% 100%,
-        100% 0,
-        98% 0,
-        50% 96%,
-        2% 0
-    );
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.25),
-            transparent 25%,
-            transparent 75%,
-            rgba(255,255,255,.25)
-        );
-
-    opacity: .7;
-
-}
-
-
-/* =====================================================
-   RABAT OUVERT
-===================================================== */
-
-#flap.open {
-
-    transform:
-        rotateX(-180deg);
-
-}
-
-#seal {
-
-    position: absolute;
-
-    left: 50%;
-
-    /*
-       Le sceau doit être exactement
-       à la pointe du rabat.
-    */
-
-    top: 51%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width: 150px;
-    height: 150px;
-
-    z-index: 30;
-
-    cursor: pointer;
-
-    transition:
-        transform .35s ease,
-        filter .35s ease;
-}
-
-
-#seal img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-
-    user-select: none;
-
-    pointer-events: none;
-}
-
-
-#seal:hover {
-
-    transform:
-        translate(-50%, -50%)
-        scale(1.05);
-
-    filter:
-        drop-shadow(0 8px 14px rgba(70,130,180,.35));
-}
-
-/* =====================================================
-   TELEPHONE
-===================================================== */
-
-@media (max-width: 768px) {
-
-    #envelopePage {
-        height: 100dvh;
-        min-height: 100dvh;
+    from {
+        transform: translateY(100vh);
     }
 
-
-    #envelopeBackground {
-
-        background-size: cover;
-
-        background-position: center center;
-    }
-
-
-    #flap {
-
-        height: 57dvh;
-
-    }
-
-
-    #seal {
-
-        width: 125px;
-        height: 125px;
-
-        top: 52%;
+    to {
+        transform: translateY(-20vh);
     }
 
 }
 
-.arabic-text {
-    font-family: 'Amiri', serif;
-    font-size: 18px;
-    direction: rtl;
-    text-align: center;
+
+/* =========================================================
+   EFFET LUMINEUX SUR LE PRENOM
+========================================================= */
+
+.glow {
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 5px white,
+            0 0 10px #9fd8ff,
+            0 0 20px #7cc8ff;
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px white,
+            0 0 30px #9fd8ff,
+            0 0 45px #7cc8ff;
+    }
+
 }
 
 .wedding-date {
@@ -1246,61 +137,541 @@ img {
     margin: 30px auto;
 }
 
+/* =========================================================
+   ANIMATION DES CARTES
+========================================================= */
 
-/* Les deux côtés */
-.date-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.card,
+.floating-card {
+    animation: cardFloat 6s ease-in-out infinite;
+}
 
-    min-width: 140px;
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
 }
 
 
-/* Ligne décorative */
-.date-line {
-    width: 100%;
-    height: 1px;
+/* =========================================================
+   TRANSITION D'APPARITION DES SECTIONS
+========================================================= */
 
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #9bb9d1,
-        transparent
-    );
-
-    margin: 8px 0;
+section {
+    transition:
+        opacity 0.5s ease,
+        transform 1s ease;
 }
 
 
-/* Centre : le jour */
-.date-center {
-    padding: 0 25px;
+/* =========================================================
+   ESPACEMENT DES SECTIONS
+========================================================= */
 
-    border-left: 1px solid #b7cde0;
-    border-right: 1px solid #b7cde0;
+#accueil,
+#letterSection {
+    position: relative;
+    min-height: 100vh;
+}
+
+#letterSection {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#invitation,
+#notes-fr,
+#notes-ar,
+#Pas-photo,
+#adresse {
+    position: relative;
 }
 
 
-/* 12 */
-.day {
-    font-size: 70px;
-    line-height: 1;
-    font-weight: 500;
+/* =========================================================
+   RESPONSIVE TABLETTE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    main {
+        width: 100%;
+        max-width: 100% !important;
+
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        padding-bottom: 100px !important;
+    }
+
+
+    /* Menu */
+
+    nav {
+        right: 18px !important;
+    }
+
+
+    nav a {
+        width: 46px !important;
+        height: 46px !important;
+    }
+
+
+    /* Bienvenue */
+
+    #letterContent {
+        width: min(100%, 600px);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    #letterContent h2 {
+        font-size: clamp(3.2rem, 11vw, 4.5rem) !important;
+    }
+
+
+    #letterContent p {
+        font-size: clamp(1.3rem, 5vw, 2rem) !important;
+    }
+
+
+    #letterContent h1 {
+        font-size: clamp(4rem, 15vw, 6rem) !important;
+    }
+
+
+    /* Cartes */
+
+    #invitation > div,
+    #notes-fr > div,
+    #notes-ar > div,
+    #Pas-photo > div,
+    #adresse > div {
+        width: min(95vw, 700px) !important;
+        min-height: 580px !important;
+    }
+
+
+    #invitation > div > div,
+    #notes-fr > div > div,
+    #notes-ar > div > div,
+    #Pas-photo > div > div,
+    #adresse > div > div {
+        inset: 32px !important;
+        padding: 40px 32px !important;
+    }
+
 }
 
 
-/* DÉCEMBRE */
-.month {
-    font-size: 22px;
-    letter-spacing: 3px;
-    font-weight: 600;
+/* =========================================================
+   RESPONSIVE TELEPHONE
+========================================================= */
+
+@media (max-width: 640px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+
+    /* =============================
+       MENU BAS DE L'ECRAN
+    ============================= */
+
+    nav {
+        top: auto !important;
+        right: auto !important;
+
+        bottom: 14px;
+        left: 50%;
+
+        transform: translateX(-50%) !important;
+
+        width: calc(100vw - 20px);
+
+        z-index: 100;
+    }
+
+
+    nav > div {
+        flex-direction: row !important;
+
+        justify-content: center;
+
+        gap: 7px !important;
+    }
+
+
+    nav a {
+        width: 40px !important;
+        height: 40px !important;
+
+        flex-shrink: 0;
+    }
+
+
+    nav i {
+        font-size: 13px;
+    }
+
+
+    /* =============================
+       CONTENU PRINCIPAL
+    ============================= */
+
+    main {
+        padding-top: 25px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        padding-bottom: 80px !important;
+    }
+
+
+    /* =============================
+       BIENVENUE
+    ============================= */
+
+    #letterContent {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    #letterContent h2 {
+        font-size: clamp(2.8rem, 14vw, 4rem) !important;
+        line-height: 1.05;
+    }
+
+
+    #letterContent p {
+        font-size: clamp(1.15rem, 6vw, 1.6rem) !important;
+
+        margin-top: 12px !important;
+
+        line-height: 1.3;
+    }
+
+
+    #letterContent h1 {
+        font-size: clamp(3.5rem, 17vw, 5.5rem) !important;
+
+        margin-top: 10px !important;
+
+        line-height: 1;
+    }
+
+
+    #letterContent img {
+        width: 55px !important;
+
+        margin-top: 12px !important;
+    }
+
+
+    #discoverBtn {
+        margin-top: 25px !important;
+
+        padding: 12px 24px !important;
+
+        font-size: 13px !important;
+    }
+
+
+    /* =============================
+       TOUTES LES CARTES
+    ============================= */
+
+    #invitation,
+    #notes-fr,
+    #notes-ar,
+    #Pas-photo,
+    #adresse {
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
+    }
+
+
+    #invitation > div,
+    #notes-fr > div,
+    #notes-ar > div,
+    #Pas-photo > div,
+    #adresse > div {
+
+        width: 96vw !important;
+
+        max-width: 390px !important;
+
+        min-height: 560px !important;
+    }
+
+
+    /* =============================
+       INTERIEUR DES CARTES
+    ============================= */
+
+    #invitation > div > div,
+    #notes-fr > div > div,
+    #notes-ar > div > div,
+    #Pas-photo > div > div,
+    #adresse > div > div {
+
+        inset: 18px !important;
+
+        padding: 25px 18px !important;
+
+        border-radius: 24px !important;
+    }
+
+
+    /* =============================
+       TITRE INVITATION
+    ============================= */
+
+    #invitation h2 {
+        font-size: clamp(2.7rem, 13vw, 4rem) !important;
+
+        line-height: 1;
+    }
+
+
+    /* =============================
+       TITRES DES AUTRES CARTES
+    ============================= */
+
+    #notes-fr h2,
+    #notes-ar h2,
+    #Pas-photo h2,
+    #adresse h2 {
+
+        font-size: clamp(1.7rem, 7vw, 2.2rem) !important;
+
+        line-height: 1.2;
+
+        margin-bottom: 20px !important;
+    }
+
+
+    /* =============================
+       TEXTES DES CARTES
+    ============================= */
+
+    #invitation p,
+    #notes-fr p,
+    #notes-fr li,
+    #notes-ar p,
+    #notes-ar li,
+    #Pas-photo p,
+    #adresse p {
+
+        font-size: 16px !important;
+
+        line-height: 1.6 !important;
+    }
+
+
+    /* =============================
+       IMAGE BAGUE
+    ============================= */
+
+    #invitation img {
+        width: 48px !important;
+    }
+
+
+    /* =============================
+       LISTES NOTES
+    ============================= */
+
+    #notes-fr ul,
+    #notes-ar ul {
+
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+        margin-top: 18px !important;
+    }
+
+
+    #notes-fr li,
+    #notes-ar li {
+
+        margin-bottom: 10px;
+    }
+
+
+    /* =============================
+       PAS DE PHOTO
+    ============================= */
+
+    #Pas-photo img {
+
+        width: 60px !important;
+
+        margin-top: 5px !important;
+    }
+
+
+    #Pas-photo br {
+        display: none;
+    }
+
+
+    /* =============================
+       BOUTON GOOGLE MAPS
+    ============================= */
+
+    #adresse a {
+
+        max-width: 100%;
+
+        font-size: 13px !important;
+
+        padding: 12px 20px !important;
+
+        white-space: nowrap;
+    }
+
+
+    /* =============================
+       COMPTE A REBOURS
+    ============================= */
+
+    #countdown {
+
+        width: 100%;
+
+        grid-template-columns: repeat(2, 1fr) !important;
+
+        gap: 10px !important;
+
+        margin-top: 28px !important;
+    }
+
+
+    #countdown > div {
+
+        padding: 12px !important;
+    }
+
+
+    #countdown div div {
+
+        font-size: 1.4rem !important;
+    }
+
+
+    #countdown p {
+
+        font-size: 12px !important;
+    }
+
+
+    /* =============================
+       EFFETS DECORATIFS
+    ============================= */
+
+    .snowflake {
+        font-size: 8px;
+    }
+
+
+    .spark {
+        width: 3px;
+        height: 3px;
+    }
+
 }
 
 
-/* 2026 */
-.year {
-    font-size: 22px;
-    letter-spacing: 3px;
-    font-weight: 600;
+/* =========================================================
+   PETITS TELEPHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    nav a {
+        width: 37px !important;
+        height: 37px !important;
+    }
+
+
+    nav > div {
+        gap: 5px !important;
+    }
+
+
+    #letterContent h2 {
+        font-size: 2.7rem !important;
+    }
+
+
+    #letterContent h1 {
+        font-size: 3.8rem !important;
+    }
+
+
+    #invitation > div,
+    #notes-fr > div,
+    #notes-ar > div,
+    #Pas-photo > div,
+    #adresse > div {
+
+        width: 98vw !important;
+
+        min-height: 540px !important;
+    }
+
+
+    #invitation > div > div,
+    #notes-fr > div > div,
+    #notes-ar > div > div,
+    #Pas-photo > div > div,
+    #adresse > div > div {
+
+        inset: 12px !important;
+
+        padding: 20px 14px !important;
+    }
+
+
+    #invitation p,
+    #notes-fr p,
+    #notes-fr li,
+    #notes-ar p,
+    #notes-ar li,
+    #Pas-photo p,
+    #adresse p {
+
+        font-size: 14px !important;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITE / PERFORMANCE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+
 }
