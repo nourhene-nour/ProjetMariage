@@ -194,6 +194,15 @@ section {
     position: relative;
 }
 
+/* =========================================================
+   ARABIC TEXT
+========================================================= */
+.arabic-text {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    text-align: center;
+}
+
 
 /* =========================================================
    RESPONSIVE TABLETTE
