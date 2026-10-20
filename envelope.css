@@ -604,7 +604,7 @@ body {
 ========================================================= */
 
 .envelope-decoration {
-    position: relatif;
+    position: relative;
 
     z-index: 15;
 
@@ -624,7 +624,7 @@ body {
 
 .decoration-left {
     left: 0px;
-    bottom: 377px;
+    bottom: 380px;
 
     transform: rotate(-0deg);
 }
