@@ -604,7 +604,7 @@ body {
 ========================================================= */
 
 .envelope-decoration {
-    position: relative;
+    position: absolute;
 
     z-index: 15;
 
@@ -702,5 +702,20 @@ body {
             .09em;
 
     }
+   .decoration-left {
+    left: 0px;
+    bottom: 80px;
+
+    transform: rotate(-0deg);
+}
+
+
+.decoration-right {
+    right: 0px;
+    bottom: 0px;
+
+    transform: rotate(0deg);
+}
+
 
 }
